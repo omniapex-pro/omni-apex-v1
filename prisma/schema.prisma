@@ -1,4 +1,4 @@
-// Fixed Formatting
+// SCHEMA FIX - ATTEMPT 3
 generator client {
   provider = "prisma-client-js"
 }
