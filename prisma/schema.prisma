@@ -1,4 +1,32 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
-model Session { id String @id; shop String; state String; isOnline Boolean @default(false); scope String?; expires DateTime?; accessToken String; userId BigInt? }
-model SchemaDefinition { id String @id @default(uuid()); shop String; ownerType String; key String; name String?; type String; description String?; lastAudited DateTime @default(now()); @@unique([shop, ownerType, key]) }
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id          String    @id
+  shop        String
+  state       String
+  isOnline    Boolean   @default(false)
+  scope       String?
+  expires     DateTime?
+  accessToken String
+  userId      BigInt?
+}
+
+model SchemaDefinition {
+  id          String   @id @default(uuid())
+  shop        String
+  ownerType   String
+  key         String
+  name        String?
+  type        String
+  description String?
+  lastAudited DateTime @default(now())
+
+  @@unique([shop, ownerType, key])
+}
