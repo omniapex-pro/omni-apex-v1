@@ -1,3 +1,4 @@
+// Fixed Formatting
 generator client {
   provider = "prisma-client-js"
 }
