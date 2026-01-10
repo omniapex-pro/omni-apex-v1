@@ -1,97 +1,49 @@
 # OMNI-APEX: The Schema Governance Engine
-### "The Source of Truth for the Semantic Web"
 
-**Version:** 1.0.0 (Apex Candidate)
-**Status:** Production / Live
-**License:** Proprietary (See LEGAL_IP.md)
+"The Source of Truth for the Semantic Web"
 
----
-
-## 1. Executive Summary
-Omni-Apex is a decentralized schema governance protocol designed for Shopify Plus and Enterprise merchants. Unlike traditional SEO plugins that inject static JSON-LD, Omni-Apex acts as a **Stateful Middleware**, creating a "Vault" of schema definitions that enforces data integrity across the storefront.
-
-## 2. The Architecture (Layer 1: Control Plane)
-
-We utilize a "Split Brain" architecture to ensure security and speed:
-
-* **Core Engine:** `Node.js` running `Remix` (React Framework).
-* **The Vault:** `PostgreSQL` (hosted on Neon.tech). Ensures ACID compliance for schema definitions.
-* **ORM:** `Prisma`. Guarantees type safety between the App and the Database.
-* **Frontend:** `Shopify App Bridge` + `Polaris` (Brutalist Mode).
-* **Injection:** `Liquid App Embed` + `Service Worker` (The "Dormant Node").
-
-## 3. Installation & Deployment
-
-### Prerequisites
-* Node.js 18+
-* PostgreSQL Database (Neon/Railway)
-* Shopify Partner Account
-
-### Environment Variables
-The application requires the following keys in `.env` (Local) or Railway Variables (Production):
-* `SHOPIFY_API_KEY`
-* `SHOPIFY_API_SECRET`
-* `SCOPES` (write_products, read_themes)
-* `DATABASE_URL` (Postgres Connection String)
-* `HOST` (The public domain)
-
-### Commands
-```bash
-npm install       # Install dependencies
-npm run dev       # Start local development
-npm run setup     # Run Prisma migrations
-git push          # Deploy to Railway (via GitHub Hook)
-
-
-git push  
-cat << 'EOF' > README.md
-# OMNI-APEX: The Schema Governance Engine
-### "The Source of Truth for the Semantic Web"
-
-**Version:** 1.0.0 (Apex Candidate)
-**Status:** Production / Live
-**License:** Proprietary (See LEGAL_IP.md)
+Version: 1.0.0
+Status: Production / Live
+License: Proprietary (See LEGAL_IP.md)
 
 ---
 
-## 1. Executive Summary
-Omni-Apex is a decentralized schema governance protocol designed for Shopify Plus and Enterprise merchants. Unlike traditional SEO plugins that inject static JSON-LD, Omni-Apex acts as a **Stateful Middleware**, creating a "Vault" of schema definitions that enforces data integrity across the storefront.
+## Executive Summary
+Omni-Apex is a decentralized schema governance protocol for Shopify Plus and Enterprise merchants. It acts as a stateful middleware that manages and enforces structured data (schema) definitions across a storefront via a secure Vault and client-side Dormant Nodes.
 
-## 2. The Architecture (Layer 1: Control Plane)
+## Architecture
+- Core Engine: Node.js + Remix
+- Database (Vault): PostgreSQL (Neon/Railway)
+- ORM: Prisma
+- Frontend: Shopify App Bridge + Polaris
+- Injection: Liquid App Embed + Service Worker (Dormant Node)
 
-We utilize a "Split Brain" architecture to ensure security and speed:
-
-* **Core Engine:** `Node.js` running `Remix` (React Framework).
-* **The Vault:** `PostgreSQL` (hosted on Neon.tech). Ensures ACID compliance for schema definitions.
-* **ORM:** `Prisma`. Guarantees type safety between the App and the Database.
-* **Frontend:** `Shopify App Bridge` + `Polaris` (Brutalist Mode).
-* **Injection:** `Liquid App Embed` + `Service Worker` (The "Dormant Node").
-
-## 3. Installation & Deployment
-
+## Installation & Deployment
 ### Prerequisites
-* Node.js 18+
-* PostgreSQL Database (Neon/Railway)
-* Shopify Partner Account
+- Node.js 18+
+- PostgreSQL (Neon/Railway)
+- Shopify Partner Account
 
 ### Environment Variables
-The application requires the following keys in `.env` (Local) or Railway Variables (Production):
-* `SHOPIFY_API_KEY`
-* `SHOPIFY_API_SECRET`
-* `SCOPES` (write_products, read_themes)
-* `DATABASE_URL` (Postgres Connection String)
-* `HOST` (The public domain)
+The application requires the following environment variables:
+- SHOPIFY_API_KEY
+- SHOPIFY_API_SECRET
+- SCOPES (comma-separated, e.g. write_products,read_themes)
+- DATABASE_URL (Postgres connection string)
+- HOST or SHOPIFY_APP_URL (public app URL)
 
-### Commands
+### Local commands
 ```bash
-npm install       # Install dependencies
-npm run dev       # Start local development
-npm run setup     # Run Prisma migrations
-git push          # Deploy to Railway (via GitHub Hook)
+npm install
+npm run dev
+npm run setup   # run prisma migrations
+```
+
+## Deployment
+This app is typically deployed to a platform like Railway or Fly. Manage environment variables in the host provider dashboard.
+
+---
+Copyright © 2026 Omni Apex Group.
 
 
-git push  
-
-`git add .`
-2.  `git commit -m "Docs: Added Legal, Privacy, and Readme"`
-3.  `git push -u origin main`
+---
