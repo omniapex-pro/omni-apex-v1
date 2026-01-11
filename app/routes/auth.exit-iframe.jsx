@@ -1,8 +1,7 @@
 import { redirect } from "@remix-run/node";
-import type { LoaderFunctionArgs } from "@remix-run/node";
 import { authenticate } from "../shopify.server";
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request }) => {
   const { isMockShop } = await authenticate.admin(request);
 
   if (isMockShop) {
