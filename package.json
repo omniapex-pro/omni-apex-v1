@@ -1,43 +1,20 @@
 {
-  "name": "omnigraph-apex",
+  "name": "omni-apex-v1",
   "private": true,
   "sideEffects": false,
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
-    "dev": "shopify app dev",
     "build": "remix build",
-    "start": "remix-serve ./build/index.js",
-    "deploy": "shopify app deploy",
+    "dev": "remix dev --manual",
     "generate": "prisma generate",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "start": "remix-serve ./build/index.js",
+    "typecheck": "tsc",
     "migrate": "prisma migrate deploy",
     "setup": "npm run generate && npm run migrate",
     "postinstall": "prisma generate"
   },
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@prisma/client": "5.17.0",
-<<<<<<< HEAD
-    "@remix-run/node": "^2.0.0",
-    "@remix-run/react": "^2.0.0",
-    "@remix-run/serve": "^2.0.0",
-    "@shopify/app-bridge-react": "^4.0.0",
-    "@shopify/polaris": "^12.0.0",
-    "@shopify/shopify-api": "^9.0.0",
-    "@shopify/shopify-app-remix": "^2.0.0",
-    "@shopify/shopify-app-session-storage-prisma": "^4.0.0",
-    "isbot": "^4.1.0",
-    "prisma": "5.17.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-=======
-=======
->>>>>>> 160df7960d2fa033ce775ab2c278289fb441e0bc
-=======
-    "@prisma/client": "5.17.0",
->>>>>>> a245087253928a67a2ba8f966793ddaaba0a362a
     "@remix-run/node": "2.6.0",
     "@remix-run/react": "2.6.0",
     "@remix-run/serve": "2.6.0",
@@ -50,16 +27,16 @@
     "prisma": "5.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
->>>>>>> d03eecc796ae1370979b2b284fa43e0e021f50c8
   },
   "devDependencies": {
     "@remix-run/dev": "2.6.0",
-    "@shopify/app": "3.50.0",
-    "@shopify/cli": "3.50.0",
-    "prisma": "5.17.0",
-    "tailwindcss": "3.4.0"
+    "@remix-run/eslint-config": "2.6.0",
+    "@shopify/app-bridge-types": "^0.0.3",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "eslint": "^8.42.0",
+    "typescript": "^5.2.2"
   },
-
   "engines": {
     "node": ">=18.0.0"
   }
