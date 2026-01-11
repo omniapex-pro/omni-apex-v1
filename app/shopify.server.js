@@ -1,7 +1,7 @@
 import "@shopify/shopify-app-remix/adapters/node";
 import { shopifyApp } from "@shopify/shopify-app-remix/server";
 import { PrismaSessionStorage } from "@shopify/shopify-app-session-storage-prisma";
-import { restResources } from "@shopify/shopify-api/rest/admin/2025-04";
+import { restResources } from "@shopify/shopify-api/rest/admin/2024-01";
 import prisma from "./db.server";
 const shopify = shopifyApp({ apiKey: process.env.SHOPIFY_API_KEY, apiSecretKey: process.env.SHOPIFY_API_SECRET, scopes: process.env.SCOPES?.split(",") || ["write_products", "read_themes"], appUrl: process.env.SHOPIFY_APP_URL || process.env.HOST, authPathPrefix: "/auth", sessionStorage: new PrismaSessionStorage(prisma), restResources, webhooks: { APP_UNINSTALLED: { deliveryMethod: "http", callbackUrl: "/webhooks" } }, hooks: { afterAuth: async ({ session }) => { await shopify.registerWebhooks({ session }); } }, future: { v3_webhookAdminContext: true, v3_authenticatePublic: true } });
 export default shopify;
