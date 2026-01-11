@@ -1,6 +1,7 @@
 {
   "name": "omni-apex-v1",
   "private": true,
+  "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
