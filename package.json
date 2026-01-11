@@ -16,6 +16,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "5.17.0",
 <<<<<<< HEAD
     "@remix-run/node": "^2.0.0",
@@ -31,6 +32,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
 =======
+=======
+>>>>>>> 160df7960d2fa033ce775ab2c278289fb441e0bc
     "@remix-run/node": "2.6.0",
     "@remix-run/react": "2.6.0",
     "@remix-run/serve": "2.6.0",
@@ -40,6 +43,7 @@
     "@shopify/shopify-app-remix": "2.7.0",
     "@shopify/shopify-app-session-storage-prisma": "4.0.5",
     "isbot": "4.4.0",
+    "prisma": "5.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
 >>>>>>> d03eecc796ae1370979b2b284fa43e0e021f50c8
