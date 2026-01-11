@@ -8,7 +8,7 @@
     "dev": "remix dev --manual",
     "generate": "prisma generate",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/index.js",
+    "start": "prisma migrate deploy && remix-serve ./build/index.js",
     "typecheck": "tsc",
     "migrate": "prisma migrate deploy",
     "setup": "npm run generate && npm run migrate",
