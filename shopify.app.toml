@@ -9,6 +9,6 @@ scopes = "write_products,read_themes"
 [auth]
 redirect_urls = [ "https://shopify.com/auth/callback" ]
 [webhooks]
-api_version = "2024-04"
+api_version = "2026-01"
 [pos]
 embedded = false
