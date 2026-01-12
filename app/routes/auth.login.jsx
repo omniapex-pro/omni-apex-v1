@@ -3,6 +3,9 @@ import { json } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { Page, Card, Button, TextField, BlockStack, Text } from "@shopify/polaris";
 import { login } from "../shopify.server";
+import polarisStyles from "@shopify/polaris/build/esm/styles.css";
+
+export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export const loader = async ({ request }) => {
   return await login(request);
