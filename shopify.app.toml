@@ -1,14 +1,13 @@
 client_id = "ead555d41645d6633e4bc5a131883cbd"
 name = "OmniGraph Apex"
-application_url = "https://shopify.com"
+application_url = "https://web-production-89b20.up.railway.app"
 embedded = true
 [build]
-include_config_on_deploy = true
-[access_scopes]
+include_config_on_deploy = true[access_scopes]
 scopes = "write_products,read_themes"
 [auth]
 redirect_urls = [ "https://shopify.com/auth/callback" ]
 [webhooks]
 api_version = "2026-01"
 [pos]
-embedded = false
+embedded = true
