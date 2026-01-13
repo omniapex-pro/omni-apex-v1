@@ -1,4 +1,4 @@
-import db from "../db.server";
+import { prisma as db } from "../db.server";
 import { authenticate } from "../shopify.server";
 const SCHEMA_QUERY = `query getMetafieldDefinitions { metafieldDefinitions(first: 250, ownerType: PRODUCT) { edges { node { id namespace key name description type { name } validationStatus } } } }`;
 export async function syncSchema(request) { const { admin, session } = await authenticate.admin(request); const response = await admin.graphql(SCHEMA_QUERY); const responseJson = await response.json(); const definitions = responseJson.data.metafieldDefinitions.edges; const operations = definitions.map((edge) => { const def = edge.node; return db.schemaDefinition.upsert({ where: { shop_ownerType_key: { shop: session.shop, ownerType: "PRODUCT", key: `${def.namespace}.${def.key}` } }, update: { name: def.name, type: def.type.name, description: def.description, lastAudited: new Date() }, create: { shop: session.shop, ownerType: "PRODUCT", key: `${def.namespace}.${def.key}`, name: def.name, type: def.type.name, description: def.description } }); }); await db.$transaction(operations); return { status: "success", count: operations.length }; }
