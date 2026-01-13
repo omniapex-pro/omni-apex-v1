@@ -3,6 +3,46 @@ import { useLoaderData, useFetcher } from "@remix-run/react";
 import { Page, Layout, Card, Text, Button, BlockStack, Badge } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 import { getSchema, syncSchema } from "../services/schema.server";
-export const loader = async ({ request }) => { const { session } = await authenticate.admin(request); const schema = await getSchema(session.shop); return json({ schema, shop: session.shop }); };
-export const action = async ({ request }) => { await syncSchema(request); return json({ status: "synced" }); };
-export default function Index() { const { schema, shop } = useLoaderData(); const fetcher = useFetcher(); const isLoading = fetcher.state === "submitting"; return ( <Page fullWidth> <div style={{ marginBottom: "2rem" }}><Text variant="heading3xl" as="h1">OMNIGRAPH APEX</Text><Text variant="bodySm" as="p" tone="subdued">Connected to: <span style={{ fontFamily: "monospace" }}>{shop}</span></Text></div> <Layout> <Layout.Section><Card><BlockStack gap="400"><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><Text variant="headingMd" as="h2">SCHEMA VAULT</Text><fetcher.Form method="post"><Button submit loading={isLoading} variant="primary" tone="critical">FORCE SYNC</Button></fetcher.Form></div><Text as="p">Total Definitions Monitored: <strong>{schema.length}</strong></Text></BlockStack></Card></Layout.Section> <Layout.Section><Card padding="0">{schema.length === 0 ? (<div style={{ padding: "2rem", textAlign: "center", opacity: 0.6 }}><Text as="p">NO SCHEMA DETECTED. INITIATE SYNC.</Text></div>) : (<table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}><thead style={{ background: "#f1f2f4", textTransform: "uppercase", fontSize: "0.8rem" }}><tr><th style={{ padding: "12px" }}>Key</th><th style={{ padding: "12px" }}>Type</th><th style={{ padding: "12px" }}>Status</th></tr></thead><tbody>{schema.map((item) => (<tr key={item.id} style={{ borderTop: "1px solid #e1e3e5" }}><td style={{ padding: "12px", fontFamily: "monospace" }}>{item.key}</td><td style={{ padding: "12px" }}><Badge tone="info">{item.type}</Badge></td><td style={{ padding: "12px" }}><Badge tone="success">LOCKED</Badge></td></tr>))}</tbody></table>)}</Card></Layout.Section> </Layout> </Page> ); }
+
+export const loader = async ({ request }) => {
+  const { session } = await authenticate.admin(request);
+  const schema = await getSchema(session.shop);
+  return json({ schema, shop: session.shop });
+};
+
+export const action = async ({ request }) => {
+  await syncSchema(request);
+  return json({ status: "synced" });
+};
+
+export default function Index() {
+  const { schema, shop } = useLoaderData();
+  const fetcher = useFetcher();
+  const isLoading = fetcher.state === "submitting";
+
+  return (
+    <Page fullWidth>
+      <div style={{ marginBottom: "2rem" }}>
+        <Text variant="heading3xl" as="h1">OMNIGRAPH APEX</Text>
+        <Text variant="bodySm" as="p" tone="subdued">
+          Connected to: <span style={{ fontFamily: "monospace" }}>{shop}</span>
+        </Text>
+      </div>
+      <Layout>
+        <Layout.Section>
+          <Card>
+            <BlockStack gap="400">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Text variant="headingMd" as="h2">SCHEMA VAULT</Text>
+                <fetcher.Form method="post">
+                  <Button submit loading={isLoading} variant="primary" tone="critical">FORCE SYNC</Button>
+                </fetcher.Form>
+              </div>
+              <Text as="p">Total Definitions Monitored: <strong>{schema.length}</strong></Text>
+            </BlockStack>
+          </Card>
+        </Layout.Section>
+      </Layout>
+    </Page>
+  );
+}

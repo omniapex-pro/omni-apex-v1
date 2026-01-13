@@ -1,6 +1,6 @@
 client_id = "ead555d41645d6633e4bc5a131883cbd"
 name = "Omni-Apex-Pro-v7"
-application_url = "https://www.web-production-89b20.up.railway.app"
+application_url = "https://web-production-89b20.up.railway.app"
 embedded = true
 [build]
 include_config_on_deploy = true
@@ -9,6 +9,6 @@ scopes = "write_products,read_products,write_themes,read_themes"
 [auth]
 redirect_urls = [ "https://web-production-89b20.up.railway.app/auth/callback" ]
 [webhooks]
-api_version = "2024-04"
+api_version = "2026-01"
 [pos]
 embedded = true
