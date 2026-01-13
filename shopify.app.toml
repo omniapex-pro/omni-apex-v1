@@ -3,7 +3,8 @@ name = "OmniGraph Apex"
 application_url = "https://web-production-89b20.up.railway.app"
 embedded = true
 [build]
-include_config_on_deploy = true[access_scopes]
+include_config_on_deploy = true
+[access_scopes]
 scopes = "write_products,read_themes"
 [auth]
 redirect_urls = [ "https://shopify.com/auth/callback" ]
