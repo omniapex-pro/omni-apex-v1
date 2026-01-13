@@ -14,6 +14,6 @@
         "numReplicas": 1
       }
     },
-    "restartPolicyType": "NEVER"
+    "restartPolicyType": "ON_FAILURE"
   }
 }
