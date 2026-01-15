@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "a02b5559d0e8147e63bb8ef1335e320d"
+name = "omni-apex-pro_v7"
+application_url = "https://web-production-89b20.up.railway.app"
+embedded = true
+
+[webhooks]
+api_version = "2025-04"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_products,write_reports,read_reports,read_themes,write_themes"
+optional_scopes = [ ]
+use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [
+  "https://web-production-89b20.up.railway.app/app/auth/callback",
+  "https://web-production-89b20.up.railway.app/auth/shopify/callback",
+  "https://web-production-89b20.up.railway.app/auth/callback"
+]
+
+[pos]
+embedded = true
+
+[app_preferences]
+url = "https://web-production-89b20.up.railway.app/app"
