@@ -2,10 +2,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install OpenSSL for Prisma compatibility on Alpine
+RUN apk add --no-cache openssl
+
 COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm install
+# 'npm ci' is faster and more reliable than 'npm install' for CI/CD/Docker
+RUN npm ci
 
 COPY . .
 
@@ -17,5 +21,8 @@ RUN npm run build
 
 # Switch to Production for runtime
 ENV NODE_ENV=production
+
+# Document that the app listens on port 3000
+EXPOSE 3000
 
 CMD ["npm", "run", "start"]
