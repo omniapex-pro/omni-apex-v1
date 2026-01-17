@@ -9,6 +9,6 @@ scopes = "write_products,read_products,write_themes,read_themes"
 [auth]
 redirect_urls = [ "https://web-production-89b20.up.railway.app/auth/callback" ]
 [webhooks]
-api_version = "2026-01"
+api_version = "2025-04"
 [pos]
 embedded = true
