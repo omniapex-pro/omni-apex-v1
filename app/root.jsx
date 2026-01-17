@@ -1,4 +1,5 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import { json } from "@remix-run/node";
+import { useLoaderData, Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
 export default function App() {
   return (
