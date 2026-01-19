@@ -25,4 +25,4 @@ ENV NODE_ENV=production
 # Document that the app listens on port 3000
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start"]
